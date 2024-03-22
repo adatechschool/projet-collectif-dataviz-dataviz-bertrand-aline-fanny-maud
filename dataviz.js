@@ -7,14 +7,17 @@ const collection = await fetch("https://ws.audioscrobbler.com/2.0/?method=tag.ge
     //     console.log(json);
     // });
 const music = await collection.json();
-console.log(music);
+// console.log(music);
+// console.log(music.toptags.tag);
+let x = music.toptags.tag
+console.log(x)
 
-function generateStyle(music) {
-    let article;
-    for (let i; i < music.length; i++) {
-        article = music[i];
-    } 
-    return article;
-}
+// function generateStyle(music) {
+//     let article = [];
+//     for (let i=0; i < music.length; i++) {
+//         let y = article.push(music[i]);
+//     } 
+//     return article;
+// }
 
-//console.log(generateStyle(music));
+// console.log(generateStyle(music.toptags.tag));
