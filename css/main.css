@@ -1,0 +1,14 @@
+/*--------------------DataViz - Test - CSS ----------------------------*/
+
+/*----Remiose à 0 de toutes les marges----*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*---------MAIN-------------*/
+
+canvas {
+    background-color: #deedff;
+}
