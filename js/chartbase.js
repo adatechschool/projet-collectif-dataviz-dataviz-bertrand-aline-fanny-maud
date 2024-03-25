@@ -40,7 +40,12 @@ if (resultRock !== null) {
   console.log("La catégorie avec le nom '" + searchNameRock + "' n'a pas été trouvée.");
 }
 
+// Récupération des "count" pour chaque genre et relié
+const rock = (musicTags[0]["count"])/100000;
+const electro = (musicTags[1]["count"])/100000;
+const pop = (musicTags[5]["count"])/100000;
 
+// Création des Bubbles
 new Chart(ctx, {
   type: 'bubble', 
   data: {
