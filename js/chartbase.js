@@ -38,8 +38,6 @@ function findByName(name) {
     }
   }
   return null; // Si aucune correspondance n'est trouvée
-<<<<<<< HEAD
-=======
 }
 
 // Valeur de la propriété 'name' à rechercher
@@ -61,7 +59,6 @@ if (resultRock !== null) {
   console.log("Reach:", resultRock.reach);
 } else {
   console.log("La catégorie avec le nom '" + searchNameRock + "' n'a pas été trouvée.");
->>>>>>> a068e9a (fonction findByName)
 }
 
 // Valeur de la propriété 'name' à rechercher
