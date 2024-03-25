@@ -87,7 +87,7 @@ new Chart(ctx, {
     animations: {
       tension: {
         duration: 1000,
-        easing: 'linear',
+        easing: 'easeInCirc',
         from: 1,
         to: 0,
         loop: true
@@ -99,10 +99,10 @@ new Chart(ctx, {
           display: false
         },
         border: {
-          display: true
+          display: false
         },
         ticks: {
-          display: true
+          display: false
         }
       },
       y: {
@@ -110,10 +110,10 @@ new Chart(ctx, {
           display: false
         },
         border: {
-          display: true
+          display: false
         },
         ticks: {
-          display: true
+          display: false
         }
       }
     },

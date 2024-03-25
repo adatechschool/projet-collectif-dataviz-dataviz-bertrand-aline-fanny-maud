@@ -11,4 +11,7 @@
 
 canvas {
     background-color: #deedff;
+    background-image: url(Disque_Vinyl.svg);
+    background-repeat: no-repeat;
+    background-position: center;
 }
