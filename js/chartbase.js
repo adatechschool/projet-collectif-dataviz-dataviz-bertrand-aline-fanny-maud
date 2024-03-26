@@ -41,9 +41,13 @@ if (resultRock !== null) {
 }
 
 // Récupération des "count" pour chaque genre et relié
-const rock = (musicTags[0]["count"])/100000;
-const electro = (musicTags[1]["count"])/100000;
-const pop = (musicTags[5]["count"])/100000;
+const rockCount = (musicTags[0]["count"])/100000;
+const electroCount = (musicTags[1]["count"])/100000;
+const popCount = (musicTags[5]["count"])/100000;
+// Récupération des "reach" pour position x
+const rockReach = (musicTags[0]["reach"]);
+const electroReach = (musicTags[1]["reach"]);
+const popReach = (musicTags[5]["reach"]);
 
 // Création des Bubbles
 new Chart(ctx, {
@@ -54,97 +58,118 @@ new Chart(ctx, {
       {
         label: resultRock.name,
         data: [{
-          x: 3,
-          y: 4,
-          r: resultRock.count/50000
+          x: rockReach,
+          y: randBubPosY(),
+          r: rockCount
         },
+        //bubulles sup pour demo -start-
         {
-          x: 3,
-          y: 3,
-          r: resultAltRock.count/50000
-        }, 
-        //{
-        //   x: 5,
-        //   y: 9,
-        //   r: 49
-        // }
+          x: 300000,
+          y: randBubPosY(),
+          r: 45
+        }, {
+          x: 150000,
+          y: randBubPosY(),
+          r: 49
+        }
+        //bubulles sup pour demo -end-
       ],
+        //Paramètres datasets[1]
         borderColor: '#de9eb2',
         borderWidth: 3,
-        backgroundColor: 'rgb(255,99,132)',
-        hoverBorderColor: 'rgb(56,123,234)',
-        //drawActiveElementsOnTop
+        backgroundColor: 'rgba(255,99,132,0.6)',
+        hoverBackgroundColor: 'rgba(256,99,132,0.9)',
+        hoverBorderColor: 'rgb(255,0,54)',
+        hoverRadius: 100
       },
       {
         label : resultElectro.name,
         data: [{
-          x: 4,
-          y: 4,
-          r: resultElectro.count/50000
+          x: electroReach,
+          y: randBubPosY(),
+          r: electroCount
         },
-        // {
-        //   x: 7,
-        //   y: 7,
-        //   r: 9
-        // }, 
-        // {
-        //   x: 15,
-        //   y: 6,
-        //   r: 65
-        // }
+        //bubulles sup pour demo -start-
+        {
+          x: 485000,
+          y: randBubPosY(),
+          r: 9
+        }, 
+        {
+          x: 358456,
+          y: randBubPosY(),
+          r: 65
+        }
+        //bubulles sup ppour demo -end-
       ],
+        //Paramètres datasets[2]
         borderColor: '#82bfe8',
         borderWidth: 3,
-        backgroundColor: 'rgb(54,162,235)',
+        backgroundColor: 'rgba(54,162,235,0.6)',
+        hoverBackgroundColor: 'rgba(54,162,235,0.9)',
+        hoverBorderColor: 'rgb(0,152,255)',
+        hoverRadius: 100 
       },
       {
         label : resultPop.name,
         data: [{
-          x: 9,
-          y: 6,
-          r: resultPop.count/50000
+          x: popReach,
+          y: randBubPosY(),
+          r: popCount
         },
-        // {
-        //   x: 11,
-        //   y: 4,
-        //   r: 35
-        // }, 
-        // {
-        //   x: 5,
-        //   y: 6,
-        //   r: 32
-        // }
+        //bubulles sup pour demo -start-
+        {
+          x: 110000,
+          y: randBubPosY(),
+          r: 35
+        }, 
+        {
+          x: 488235,
+          y: randBubPosY(),
+          r: 32
+        }
+        //bubulles sup ppour demo -end-
       ],
+        //Paramètres datasets[3]
         borderColor: '#f0e0bb',
         borderWidth: 3,
-        backgroundColor: 'rgb(255,205,86)',
-
+        backgroundColor: 'rgba(255,205,86,0.6)',
+        hoverBackgroundColor: 'rgba(255,205,86,0.9)',
+        hoverBorderColor: 'rgb(255,180,0)',
+        hoverRadius: 100
       }
     ]
   },
   options: {
-    animations: {
-      tension: {
-        duration: 1000,
-        easing: 'easeInCirc',
-        from: 1,
-        to: 0,
-        loop: true
-      }
-    },
+    responsive: true,
     scales : {
       x: {
+        min: 10000,
+        max: 600000,
         grid: {
           display: false
         },
         border: {
-          display: false
+          display: true
         },
         ticks: {
-          display: false
+          display: true
+        },
+        title: {
+          display: true,
+          text: 'Nombre Auditeurs Uniques',
+          color: '#666',
+          font: {
+            family: 'Roboto',
+            size: 11,
+            weight: 'bold',
+            lineHeight: 1.2
+          }
         }
       },
       y: {
+        min: 0,
+        max: 100,
         grid : {
           display: false
         },
@@ -161,7 +186,13 @@ new Chart(ctx, {
         display: true,
         color: '#fffx',
         text: 'LastFM API DataViz'
-      }
+      },
+      legend: {
+        title: {
+          display: true,
+          text: "Principaux Genres de Musiques"
+        }
+      } 
     }
   }
 });
