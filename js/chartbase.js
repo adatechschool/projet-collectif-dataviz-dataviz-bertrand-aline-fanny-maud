@@ -13,7 +13,6 @@ function randBubPosY(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (90 - 10 +1)) + 10;
 }
-console.log(randBubPosY());
 
 // Fonction pour rechercher par valeur de la propriété 'name'
 function findByName(name) {
@@ -27,26 +26,17 @@ function findByName(name) {
   return null; // Si aucune correspondance n'est trouvée
 }
 
-// Valeur de la propriété 'name' à rechercher
-let searchNameRock = 'rock';
-let searchNameAltRock = 'alternative rock';
-let searchNamePop = 'pop';
-let searchNameElectro = 'electronic';
-
 // Recherche par valeur de la propriété 'name'
-let resultRock = findByName(searchNameRock);
-let resultAltRock = findByName(searchNameAltRock);
-let resultPop = findByName(searchNamePop);
-let resultElectro = findByName(searchNameElectro);
+let resultRock = findByName('rock');
+let resultAltRock = findByName('alternative rock');
+let resultHardRock = findByName('hard rock');
+let resultElectro = findByName('electronic');
+let resultExpe = findByName('experimental');
+let resultElecA = findByName('electronica');
+let resultPop = findByName('pop');
+let resultFolk = findByName('folk');
+let resultDance = findByName('dance');
 
-// Vérification du résultat
-if (resultRock !== null) {
-  console.log("Vous avez sélectionné la catégorie '" + resultRock.name + "'.");
-  console.log("Count:", resultRock.count);
-  console.log("Reach:", resultRock.reach);
-} else {
-  console.log("La catégorie avec le nom '" + searchNameRock + "' n'a pas été trouvée.");
-}
 
 // Création des Bubbles
 new Chart(ctx, {
@@ -58,17 +48,17 @@ new Chart(ctx, {
         data: [{
           x: resultRock.reach,
           y: randBubPosY(),
-          r: resultRock.count/100000
+          r: resultRock.count/30000
         },
         //bubulles sup pour demo -start-
         {
-          x: 300000,
+          x: resultAltRock.reach,
           y: randBubPosY(),
-          r: 45
+          r: resultAltRock.count/30000
         }, {
-          x: 150000,
+          x: resultHardRock.reach,
           y: randBubPosY(),
-          r: 49
+          r: resultHardRock.count/30000
         }
         //bubulles sup pour demo -end-
       ],
@@ -85,18 +75,18 @@ new Chart(ctx, {
         data: [{
           x: resultElectro.reach,
           y: randBubPosY(),
-          r: resultElectro.count/100000
+          r: resultElectro.count/30000
         },
         //bubulles sup pour demo -start-
         {
-          x: 485000,
+          x: resultExpe.reach,
           y: randBubPosY(),
-          r: 9
+          r: resultExpe.count/30000
         }, 
         {
-          x: 358456,
+          x: resultElecA.reach,
           y: randBubPosY(),
-          r: 65
+          r: resultElecA.count/30000
         }
         //bubulles sup ppour demo -end-
       ],
@@ -113,18 +103,18 @@ new Chart(ctx, {
         data: [{
           x: resultPop.reach,
           y: randBubPosY(),
-          r: resultPop.count/100000
+          r: resultPop.count/30000
         },
         //bubulles sup pour demo -start-
         {
-          x: 110000,
+          x: resultFolk.reach,
           y: randBubPosY(),
-          r: 35
+          r: resultFolk.count/30000
         }, 
         {
-          x: 488235,
+          x: resultDance.reach,
           y: randBubPosY(),
-          r: 32
+          r: resultDance.count/30000
         }
         //bubulles sup ppour demo -end-
       ],
