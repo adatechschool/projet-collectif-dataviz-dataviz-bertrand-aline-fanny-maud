@@ -28,8 +28,40 @@ function labelFetch() {
   let genres = [];
   for (let i = 0; i < musicTags.length; i++) {
     genres.push(musicTags[i]["name"]);
+// Fonction pour rechercher par valeur de la propriété 'name'
+function findByName(name) {
+  for (let key in musicTags) {
+    if (musicTags.hasOwnProperty(key)) {
+      if (musicTags[key].name === name) {
+        return musicTags[key];
+      }
+    }
   }
   return null; // Si aucune correspondance n'est trouvée
+<<<<<<< HEAD
+=======
+}
+
+// Valeur de la propriété 'name' à rechercher
+let searchNameRock = 'rock';
+let searchNameAltRock = 'alternative rock';
+let searchNamePop = 'pop';
+let searchNameElectro = 'electronic';
+
+// Recherche par valeur de la propriété 'name'
+let resultRock = findByName(searchNameRock);
+let resultAltRock = findByName(searchNameAltRock);
+let resultPop = findByName(searchNamePop);
+let resultElectro = findByName(searchNameElectro);
+
+// Vérification du résultat
+if (resultRock !== null) {
+  console.log("Vous avez sélectionné la catégorie '" + resultRock.name + "'.");
+  console.log("Count:", resultRock.count);
+  console.log("Reach:", resultRock.reach);
+} else {
+  console.log("La catégorie avec le nom '" + searchNameRock + "' n'a pas été trouvée.");
+>>>>>>> a068e9a (fonction findByName)
 }
 
 // Valeur de la propriété 'name' à rechercher
