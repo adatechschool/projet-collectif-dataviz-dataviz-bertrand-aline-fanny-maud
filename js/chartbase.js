@@ -61,6 +61,7 @@ if (resultRock !== null) {
   console.log("La catégorie avec le nom '" + searchNameRock + "' n'a pas été trouvée.");
 }
 
+<<<<<<< HEAD
 // Valeur de la propriété 'name' à rechercher
 let searchNameRock = 'rock';
 let searchNameAltRock = 'alternative rock';
@@ -82,6 +83,19 @@ if (resultRock !== null) {
   console.log("La catégorie avec le nom '" + searchNameRock + "' n'a pas été trouvée.");
 }
 
+=======
+// Récupération des "count" pour chaque genre et relié
+const rockCount = (musicTags[0]["count"])/100000;
+const electroCount = (musicTags[1]["count"])/100000;
+const popCount = (musicTags[5]["count"])/100000;
+// Récupération des "reach" pour position x
+const rockReach = (musicTags[0]["reach"]);
+const electroReach = (musicTags[1]["reach"]);
+const popReach = (musicTags[5]["reach"]);
+const rock = (musicTags[0]["count"])/100000;
+const electro = (musicTags[1]["count"])/100000;
+const pop = (musicTags[5]["count"])/100000;
+>>>>>>> ebd256f (fonction findByName)
 // Valeur de la propriété 'name' à rechercher
 let searchNameRock = 'rock';
 let searchNameAltRock = 'alternative rock';
