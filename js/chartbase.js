@@ -15,6 +15,19 @@ function findByName(name) {
         return musicTags[key];
       }
     }
+//Fonction donnant une coordonnée aléatoire en y aux bubulles
+function randBubPosY(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (90 - 10 +1)) + 10;
+}
+console.log(randBubPosY());
+
+// Fonction de récupération ds "name" seuls dans un tableau, avec seulement ceux qui nous interessent
+function labelFetch() {
+  let genres = [];
+  for (let i = 0; i < musicTags.length; i++) {
+    genres.push(musicTags[i]["name"]);
   }
   return null; // Si aucune correspondance n'est trouvée
 }
