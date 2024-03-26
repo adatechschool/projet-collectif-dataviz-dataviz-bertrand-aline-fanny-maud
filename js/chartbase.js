@@ -7,14 +7,6 @@ const music = await collection.json();
 const musicTags = music.toptags.tag;
 console.log (musicTags)
 
-// Fonction pour rechercher par valeur de la propriété 'name'
-function findByName(name) {
-  for (let key in musicTags) {
-    if (musicTags.hasOwnProperty(key)) {
-      if (musicTags[key].name === name) {
-        return musicTags[key];
-      }
-    }
 //Fonction donnant une coordonnée aléatoire en y aux bubulles
 function randBubPosY(min, max) {
   min = Math.ceil(min);
@@ -23,11 +15,6 @@ function randBubPosY(min, max) {
 }
 console.log(randBubPosY());
 
-// Fonction de récupération ds "name" seuls dans un tableau, avec seulement ceux qui nous interessent
-function labelFetch() {
-  let genres = [];
-  for (let i = 0; i < musicTags.length; i++) {
-    genres.push(musicTags[i]["name"]);
 // Fonction pour rechercher par valeur de la propriété 'name'
 function findByName(name) {
   for (let key in musicTags) {
@@ -61,67 +48,10 @@ if (resultRock !== null) {
   console.log("La catégorie avec le nom '" + searchNameRock + "' n'a pas été trouvée.");
 }
 
-<<<<<<< HEAD
-// Valeur de la propriété 'name' à rechercher
-let searchNameRock = 'rock';
-let searchNameAltRock = 'alternative rock';
-let searchNamePop = 'pop';
-let searchNameElectro = 'electronic';
-
-// Recherche par valeur de la propriété 'name'
-let resultRock = findByName(searchNameRock);
-let resultAltRock = findByName(searchNameAltRock);
-let resultPop = findByName(searchNamePop);
-let resultElectro = findByName(searchNameElectro);
-
-// Vérification du résultat
-if (resultRock !== null) {
-  console.log("Vous avez sélectionné la catégorie '" + resultRock.name + "'.");
-  console.log("Count:", resultRock.count);
-  console.log("Reach:", resultRock.reach);
-} else {
-  console.log("La catégorie avec le nom '" + searchNameRock + "' n'a pas été trouvée.");
-}
-
-=======
-// Récupération des "count" pour chaque genre et relié
-const rockCount = (musicTags[0]["count"])/100000;
-const electroCount = (musicTags[1]["count"])/100000;
-const popCount = (musicTags[5]["count"])/100000;
-// Récupération des "reach" pour position x
-const rockReach = (musicTags[0]["reach"]);
-const electroReach = (musicTags[1]["reach"]);
-const popReach = (musicTags[5]["reach"]);
-const rock = (musicTags[0]["count"])/100000;
-const electro = (musicTags[1]["count"])/100000;
-const pop = (musicTags[5]["count"])/100000;
->>>>>>> ebd256f (fonction findByName)
-// Valeur de la propriété 'name' à rechercher
-let searchNameRock = 'rock';
-let searchNameAltRock = 'alternative rock';
-let searchNamePop = 'pop';
-let searchNameElectro = 'electronic';
-
-// Recherche par valeur de la propriété 'name'
-let resultRock = findByName(searchNameRock);
-let resultAltRock = findByName(searchNameAltRock);
-let resultPop = findByName(searchNamePop);
-let resultElectro = findByName(searchNameElectro);
-
-// Vérification du résultat
-if (resultRock !== null) {
-  console.log("Vous avez sélectionné la catégorie '" + resultRock.name + "'.");
-  console.log("Count:", resultRock.count);
-  console.log("Reach:", resultRock.reach);
-} else {
-  console.log("La catégorie avec le nom '" + searchNameRock + "' n'a pas été trouvée.");
-}
-
 // Création des Bubbles
 new Chart(ctx, {
   type: 'bubble', 
   data: {
-    //labels: labelFetch(),
     datasets: [
       {
         label: resultRock.name,
