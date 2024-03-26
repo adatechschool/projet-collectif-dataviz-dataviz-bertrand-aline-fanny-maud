@@ -40,14 +40,26 @@ if (resultRock !== null) {
   console.log("La catégorie avec le nom '" + searchNameRock + "' n'a pas été trouvée.");
 }
 
-// Récupération des "count" pour chaque genre et relié
-const rockCount = (musicTags[0]["count"])/100000;
-const electroCount = (musicTags[1]["count"])/100000;
-const popCount = (musicTags[5]["count"])/100000;
-// Récupération des "reach" pour position x
-const rockReach = (musicTags[0]["reach"]);
-const electroReach = (musicTags[1]["reach"]);
-const popReach = (musicTags[5]["reach"]);
+// Valeur de la propriété 'name' à rechercher
+let searchNameRock = 'rock';
+let searchNameAltRock = 'alternative rock';
+let searchNamePop = 'pop';
+let searchNameElectro = 'electronic';
+
+// Recherche par valeur de la propriété 'name'
+let resultRock = findByName(searchNameRock);
+let resultAltRock = findByName(searchNameAltRock);
+let resultPop = findByName(searchNamePop);
+let resultElectro = findByName(searchNameElectro);
+
+// Vérification du résultat
+if (resultRock !== null) {
+  console.log("Vous avez sélectionné la catégorie '" + resultRock.name + "'.");
+  console.log("Count:", resultRock.count);
+  console.log("Reach:", resultRock.reach);
+} else {
+  console.log("La catégorie avec le nom '" + searchNameRock + "' n'a pas été trouvée.");
+}
 
 // Création des Bubbles
 new Chart(ctx, {
@@ -58,9 +70,9 @@ new Chart(ctx, {
       {
         label: resultRock.name,
         data: [{
-          x: rockReach,
+          x: resultRock.reach,
           y: randBubPosY(),
-          r: rockCount
+          r: resultRock.count/100000
         },
         //bubulles sup pour demo -start-
         {
@@ -85,9 +97,9 @@ new Chart(ctx, {
       {
         label : resultElectro.name,
         data: [{
-          x: electroReach,
+          x: resultElectro.reach,
           y: randBubPosY(),
-          r: electroCount
+          r: resultElectro.count/100000
         },
         //bubulles sup pour demo -start-
         {
@@ -113,9 +125,9 @@ new Chart(ctx, {
       {
         label : resultPop.name,
         data: [{
-          x: popReach,
+          x: resultPop.reach,
           y: randBubPosY(),
-          r: popCount
+          r: resultPop.count/100000
         },
         //bubulles sup pour demo -start-
         {
