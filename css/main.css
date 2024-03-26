@@ -10,8 +10,14 @@
 /*---------MAIN-------------*/
 
 canvas {
-    background-color: #deedff;
     background-image: url(../Img/Disque_Vinyl.svg);
     background-repeat: no-repeat;
     background-position: center;
+}
+
+footer {
+    padding: 0 10px;
+    text-align: center;
+    font-size: 11px;
+    color: darkgray;
 }
