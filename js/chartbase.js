@@ -83,7 +83,7 @@ new Chart(ctx, {
           color: '#666',
           font: {
             family: 'Roboto',
-            size: 11,
+            size: 15,
             weight: 'bold',
             lineHeight: 1.2
           }
@@ -107,7 +107,13 @@ new Chart(ctx, {
       title: {
         display: true,
         color: '#fffx',
-        text: 'LastFM API DataViz'
+        text: 'LastFM DataViz',
+        font: {
+          family: 'Roboto',
+          size: 30,
+          weight: 'bold',
+          lineHeight: 1.5
+        }
       },
       legend: {
         title: {
