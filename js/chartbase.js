@@ -14,6 +14,17 @@ function randBubPosY(min, max) {
   return Math.floor(Math.random() * (90 - 10 +1)) + 10;
 }
 
+//Fonction donnant une couleur aléatoire aux bubulles
+function randomColor() {
+  // Générer trois composantes de couleur (rouge, vert, bleu)
+  let red = Math.floor(Math.random() * 256);
+  let green = Math.floor(Math.random() * 256);
+  let blue = Math.floor(Math.random() * 256);
+  
+  // Retourner la couleur au format CSS RGB
+  return 'rgb(' + red + ',' + green + ',' + blue + ')';
+}
+
 // Fonction pour rechercher par valeur de la propriété 'name'
 function findByName(name) {
   for (let key in musicTags) {
@@ -25,108 +36,41 @@ function findByName(name) {
   }
   return null; // Si aucune correspondance n'est trouvée
 }
+console.log(findByName('rock'))
 
-// Recherche par valeur de la propriété 'name'
-let resultRock = findByName('rock');
-let resultAltRock = findByName('alternative rock');
-let resultHardRock = findByName('hard rock');
-let resultElectro = findByName('electronic');
-let resultExpe = findByName('experimental');
-let resultElecA = findByName('electronica');
-let resultPop = findByName('pop');
-let resultFolk = findByName('folk');
-let resultDance = findByName('dance');
-
+// Fonction pour créer les Bubbles en fonction des datas
+function getDataSet () {
+  let dataSet = []
+  let searchNames = ['rock', 'hard rock', 'metal', 'electronic', 'pop', 'folk','dance', 'Hip-Hop', 'jazz', 'blues'];
+  
+  // Parcourir le tableau et appliquer la fonction findByName à chaque élément
+  searchNames.forEach(function(name) {
+    let result = findByName(name);
+    // Vérifier le résultat de la recherche et afficher les informations si trouvé
+    if (result !== null) {
+      let x = result.reach
+      let r = parseInt(result.count / 30000)
+      let data = {label: result.name, data: [{
+        x: x, 
+        y : randBubPosY(),
+        r: r}
+      ],
+      borderWidth: 2,
+      hoverRadius: 100
+      }
+      dataSet.push(data)
+    } else {
+      console.log("La catégorie avec le nom '" + name + "' n'a pas été trouvée.");
+    }
+  });
+  return dataSet;
+}
 
 // Création des Bubbles
 new Chart(ctx, {
   type: 'bubble', 
-  data: {
-    datasets: [
-      {
-        label: resultRock.name,
-        data: [{
-          x: resultRock.reach,
-          y: randBubPosY(),
-          r: resultRock.count/30000
-        },
-        //bubulles sup pour demo -start-
-        {
-          x: resultAltRock.reach,
-          y: randBubPosY(),
-          r: resultAltRock.count/30000
-        }, {
-          x: resultHardRock.reach,
-          y: randBubPosY(),
-          r: resultHardRock.count/30000
-        }
-        //bubulles sup pour demo -end-
-      ],
-        //Paramètres datasets[1]
-        borderColor: '#de9eb2',
-        borderWidth: 3,
-        backgroundColor: 'rgba(255,99,132,0.6)',
-        hoverBackgroundColor: 'rgba(256,99,132,0.9)',
-        hoverBorderColor: 'rgb(255,0,54)',
-        hoverRadius: 100
-      },
-      {
-        label : resultElectro.name,
-        data: [{
-          x: resultElectro.reach,
-          y: randBubPosY(),
-          r: resultElectro.count/30000
-        },
-        //bubulles sup pour demo -start-
-        {
-          x: resultExpe.reach,
-          y: randBubPosY(),
-          r: resultExpe.count/30000
-        }, 
-        {
-          x: resultElecA.reach,
-          y: randBubPosY(),
-          r: resultElecA.count/30000
-        }
-        //bubulles sup ppour demo -end-
-      ],
-        //Paramètres datasets[2]
-        borderColor: '#82bfe8',
-        borderWidth: 3,
-        backgroundColor: 'rgba(54,162,235,0.6)',
-        hoverBackgroundColor: 'rgba(54,162,235,0.9)',
-        hoverBorderColor: 'rgb(0,152,255)',
-        hoverRadius: 100 
-      },
-      {
-        label : resultPop.name,
-        data: [{
-          x: resultPop.reach,
-          y: randBubPosY(),
-          r: resultPop.count/30000
-        },
-        //bubulles sup pour demo -start-
-        {
-          x: resultFolk.reach,
-          y: randBubPosY(),
-          r: resultFolk.count/30000
-        }, 
-        {
-          x: resultDance.reach,
-          y: randBubPosY(),
-          r: resultDance.count/30000
-        }
-        //bubulles sup ppour demo -end-
-      ],
-        //Paramètres datasets[3]
-        borderColor: '#f0e0bb',
-        borderWidth: 3,
-        backgroundColor: 'rgba(255,205,86,0.6)',
-        hoverBackgroundColor: 'rgba(255,205,86,0.9)',
-        hoverBorderColor: 'rgb(255,180,0)',
-        hoverRadius: 100
-      }
-    ]
+  data:{
+    datasets: getDataSet(),
   },
   options: {
     responsive: true,
