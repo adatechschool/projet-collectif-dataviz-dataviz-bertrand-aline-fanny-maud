@@ -14,17 +14,6 @@ function randBubPosY(min, max) {
   return Math.floor(Math.random() * (90 - 10 +1)) + 10;
 }
 
-//Fonction donnant une couleur aléatoire aux bubulles
-function randomColor() {
-  // Générer trois composantes de couleur (rouge, vert, bleu)
-  let red = Math.floor(Math.random() * 256);
-  let green = Math.floor(Math.random() * 256);
-  let blue = Math.floor(Math.random() * 256);
-  
-  // Retourner la couleur au format CSS RGB
-  return 'rgb(' + red + ',' + green + ',' + blue + ')';
-}
-
 // Fonction pour rechercher par valeur de la propriété 'name'
 function findByName(name) {
   for (let key in musicTags) {
@@ -46,6 +35,7 @@ function getDataSet () {
   // Parcourir le tableau et appliquer la fonction findByName à chaque élément
   searchNames.forEach(function(name) {
     let result = findByName(name);
+    
     // Vérifier le résultat de la recherche et afficher les informations si trouvé
     if (result !== null) {
       let x = result.reach
